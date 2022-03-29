@@ -1,2 +1,10 @@
 Desenvolva um formulário para o usuário informar o nome, e-mail, data de nascimento, 
 área de atuação e um resumo das principais atividades desenvolvidas.
+
+O formulário deve atender aos critérios a seguir:
+- O nome deve ser obrigatório e ter entre 10 e 80 carácteres
+- O e-mail deve ser obrigatório e no formato de e-mail
+- A data de nascimento deve ser entre 01 jan 1900 e a data atual
+- A área de atuação deve ser obrigatório e ter no mínimo 50 carácteres
+- O resumo das das principais atividades desenvolvidas deve comportar ao menos 5 linhas sem gerar scroll e no mínimo 150 carácteres
+
