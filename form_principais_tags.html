@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Formulário - principais tags</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Valdair">
+    <meta name="description" content="Descrição TOP!">
+    <meta name="keywords" content="HTML5, CSS3, JS">
+</head>
+
+<body>
+
+    <h1>Formulário - principais tags</h1>
+
+    <form action="#" method="PUT" target="_self">
+        <fieldset>
+            <legend>Dados Pessoais </legend>
+            <label for="txtEmail">E-mail:</label>
+            <input id="txtEmail" type="email" required minlength="5" maxlength="15"
+                placeholder="Informe um e-mail válido!">
+            <br>
+            <label>Número de filhos:</label>
+            <input type="number" min="0" max="1000" step="100" value="0">
+            <br>
+            <label>Nascimento</label>
+            <input type="date" min="2021-01-30" max="2025-01-30">
+            <br>
+            <p>Sexo:</p>
+            <label>
+                <input type="radio" name="sexo" value="M">
+                Masculino
+            </label>
+
+            <label>
+                <input type="radio" name="sexo" value="F">
+                Feminino
+            </label>
+            <input type="hidden" name="expira" value="2021-12-30">
+            <br>
+            <label> Estado</label>
+            <select name="estado" id="opcaoEstado">
+                <option value="0">Selecione</option>
+                <option value="SP">São Paulo</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="MG">Minas Gerais</option>
+            </select>
+
+        </fieldset>
+
+        <fieldset>
+            <legend>Área de interesse</legend>
+
+            <label><input type="checkbox" name="html" value="html">HTML</label>
+
+            <label><input type="checkbox" name="css" value="css">CSS</label>
+
+            <label><input type="checkbox" name="JS" value="JS">Javascript</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Mensagem</legend>
+            <textarea style="resize: none;" name="msg" cols="30" rows="15"></textarea>
+            <textarea style="resize: none;" name="contrato" cols="30" rows="10" readonly>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus harum eius et dignissimos dicta praesentium dolore totam ipsa molestiae optio aut veritatis, distinctio autem quia laudantium ipsam consequatur, maxime assumenda.
+            </textarea>
+            <label><input type="checkbox">Li e aceito</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Outros tipos de input</legend>
+            <input type="range" min="0" max="50" step="5">
+            <br>
+            <input type="time">
+            <br>
+            <input type="color">
+            <br>
+            <select size="5" multiple>
+                <option>opcao 1</option>
+                <option>opcao 2</option>
+                <option>opcao 3</option>
+                <option>opcao 4</option>
+                <option>opcao 5</option>
+            </select>
+        </fieldset>
+
+        <input type="submit" value="Mandar">
+    </form>
+</body>
+
+</html>
