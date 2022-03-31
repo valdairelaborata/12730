@@ -1,0 +1,30 @@
+body{
+    background: yellow;    
+}
+p{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.teste{
+    background: red;
+    width: 350px;
+    height: 100px;   
+}
+
+
+
+
+@media screen and (min-width: 400px){
+    body{
+        background: rgb(155, 152, 148);
+    }
+    
+    p{
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    }
+    .teste{
+        background: rgb(121, 113, 113);
+        width: 400px;
+        height: 80px;   
+    }
+}

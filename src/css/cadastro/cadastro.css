@@ -1,3 +1,11 @@
 label{
     color: blue;
 }
+
+.labelCustomizada{
+    color: rgb(224, 81, 160);
+}
+#lblNome{
+    color: red;
+    font-weight: bold;
+}
