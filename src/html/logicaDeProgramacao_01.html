@@ -17,16 +17,20 @@
  
      alert('Opa, boa noite ' + nome + ' fiquei sabendo que você tem ' + idade + ' anos!')*/
 
-    var numero1 = prompt('Informe o primeiro número:')
-    var numero2 = prompt('Informe o segundo número:')
+    var numero1 = parseInt(prompt('Informe o primeiro número:'))
+    var numero2 = parseInt(prompt('Informe o segundo número:'))
 
     var soma = numero1 + numero2
-
-    console.log('A soma de ' + numero1 + ' mais ' + numero2 + ' é: ' + soma)
-
     var subtracao = numero1 - numero2
+    var multiplicação = numero1 * numero2
+    var divisão = numero1 / numero2
 
-    console.log('A subtração de ' + numero1 + ' menos ' + numero2 + ' é: ' + subtracao)
+    alert('A soma de ' + numero1 + ' mais ' + numero2 + ' é: ' + soma)
+    alert('A subtração de ' + numero1 + ' menos ' + numero2 + ' é: ' + subtracao)
+    alert('A multiplicação de ' + numero1 + ' com ' + numero2 + ' é: ' + multiplicação)
+    alert('A divisão de ' + numero1 + ' por ' + numero2 + ' é: ' + divisão)
+
+
 
 </script>
 
