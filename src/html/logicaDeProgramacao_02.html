@@ -10,35 +10,31 @@
 </head>
 
 <style>
-    h1 {
-        color: green;
-        border-style: solid;
-    }
-    p{
-        border-bottom-style: solid;
+    div {
+
+        font-style: italic;
+
     }
 </style>
 
 <script>
+    var numeroInformado = parseInt(prompt('Informe um número para a tabuada'))
 
-    document.write('<h1>Lógica de programação com js</h1>')
+    var numeroAtual = 1
+    var numeroFinal = 10
 
-    document.write('<h2>Lista de números</h2>')
+    for (numeroAtual; numeroAtual <= numeroFinal; numeroAtual++) {
 
-    var numeroInformado = parseInt(prompt('Informe um número'))
-
-
-    for (let index = 1; index <= numeroInformado; index++) {
-
-        document.write('<p>' + index + '</p>')
+        var resultado = numeroInformado * numeroAtual
+        document.write('<div>' + numeroInformado + ' x ' + numeroAtual + ' = ' + resultado + '</div>')
+        document.write('<hr>')
 
     }
-
-
 
 </script>
 
 <body>
+
 
 </body>
 
