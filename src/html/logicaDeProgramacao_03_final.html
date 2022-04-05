@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>html - base</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Valdair">
+    <meta name="description" content="Descrição TOP!">
+    <meta name="keywords" content="HTML5, CSS3, JS">
+</head>
+
+<style>
+    body {
+        width: 80%;
+        margin: auto;
+        background-color: rgb(153, 159, 144);
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    div {
+        background-color: rgb(203, 204, 204);
+        border: solid 2px rgb(19, 11, 11);
+        margin: 1px;
+        width: 16%;
+        height: 400px;
+        /*display: flex;*/
+        float: left;
+        padding: 10px;
+
+
+    }
+
+    .titulo {
+        font-size: 20px;
+        text-align: center;
+        background-color: rgb(190, 196, 196);
+        border-bottom: solid 2px black;
+    }
+</style>
+
+<script>
+
+    document.write('<h1>Tabuada</h1>')
+    for (let numero = 1; numero <= 10; numero++) {
+        document.write('<div>')
+        document.write('<p class="titulo">Número ' + numero + '</p>')
+        for (let item = 1; item <= 10; item++) {
+            document.write('<p> ' + numero + ' x ' + item + ' = ' + numero * item + ' </p>')
+        }
+        document.write('</div>')
+    }
+
+</script>
+
+<body>
+
+</body>
+
+</html>
