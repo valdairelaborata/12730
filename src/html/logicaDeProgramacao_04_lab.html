@@ -60,6 +60,46 @@
 
 <script>
 
+    var primeiroNumero = ''
+    var segundoNumero = ''
+    var operador = ''
+
+
+    function informarNumero(numero) {
+        if (operador === '') {
+            primeiroNumero = primeiroNumero + numero
+            console.log('Primeiro número: ' + primeiroNumero)
+        }
+        else {
+            segundoNumero = segundoNumero + numero
+            console.log('Segundo número: ' + segundoNumero)
+        }
+    }
+
+    function informarOperador(parametroOperador) {
+        if (primeiroNumero !== '') {
+            operador = parametroOperador
+            console.log('Operador: ' + operador)
+        }
+    }
+
+
+    function calcular() {
+
+        var resultado = 0
+
+        if (operador === '+') {
+            resultado = parseFloat(primeiroNumero) + parseFloat(segundoNumero)
+        }
+
+        exibir(resultado)
+
+    }
+
+    function exibir(valor) {
+        document.getElementById('display').innerHTML = valor
+    }
+
 
 </script>
 
@@ -74,15 +114,15 @@
         <button>7</button>
         <button>8</button>
         <button>9</button>
-        <button>=</button>
+        <button onclick="calcular()">=</button>
         <button>4</button>
         <button>5</button>
-        <button>6</button>
+        <button onclick="informarNumero('6')">6</button>
         <button>-</button>
         <button>1</button>
         <button>2</button>
-        <button>3</button>
-        <button class="mais">+</button>
+        <button onclick="informarNumero('3')">3</button>
+        <button onclick="informarOperador('+')" class="mais">+</button>
         <button class="zero">0</button>
         <button>,</button>
 
