@@ -86,41 +86,11 @@
                 telefone: $("#txtTelefone").val()
             };
 
-            var contatosStorage = JSON.parse(localStorage.getItem("contatos"));
-
-            //console.log('Valores atuais no localstorage ' + JSON.stringify(contatosStorage));
-
-            if (contatosStorage == null) {
-                contatosStorage = [];
-                contatosStorage.push(contatos);
-            }
-            else {
-                if (posicaoParaRemover > -1) {
-
-                    contatosStorage[posicaoParaRemover] = {
-                        nome: $("#txtNome").val(),
-                        idade: $("#txtIdade").val(),
-                        telefone: $("#txtTelefone").val()
-                    };
-                }
-                else {
-                    contatosStorage.push(contatos);
-                }
-            }
-
-            //console.log('Com o objeto atual adicionado! ' + JSON.stringify(contatosStorage));
-            localStorage.setItem("contatos", JSON.stringify(contatosStorage))
+            
+            alert(JSON.stringify(contatos))
 
 
-            $('#tblContatos tr:not(:first)').remove();
-
-            //contatosStorage = JSON.parse(localStorage.getItem("contatos"));
-
-            //console.log(contatosStorage[0]);
-
-            Listar();
-
-            posicaoParaRemover = -1;
+           
 
         }
 
