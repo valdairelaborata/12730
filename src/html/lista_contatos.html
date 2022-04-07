@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de contatos</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+
+        var posicaoParaRemover = -1;
+
+        $(function () {
+            $("#btnSalvar").click(function () {
+                adicionarContato();
+
+                $('input').val('');
+                $('#txtNome').focus();
+            });
+
+            Listar();
+
+            $(document).on('click', '#btnExcluir', function () {
+
+                var posicao = parseInt($(this).attr("alt"));
+
+                var contatosStorage = JSON.parse(localStorage.getItem("contatos"));
+                contatosStorage.splice(posicao, 1);
+                localStorage.setItem("contatos", JSON.stringify(contatosStorage))
+
+                alert('Contato excluído!');
+
+                Listar();
+
+            });
+
+
+            $(document).on('click', '#btnEditar', function () {
+
+                // $('#btnAdd').hide();
+
+                var posicao = parseInt($(this).attr("alt"));
+                posicaoParaRemover = posicao;
+                var contatosStorage = JSON.parse(localStorage.getItem("contatos"));
+
+                var contato = contatosStorage[posicao];
+
+                //console.log(contato.nome);
+
+
+                $("#txtNome").val(contato.nome);
+                $("#txtIdade").val(contato.idade);
+                $("#txtTelefone").val(contato.telefone);
+                // $('#btnSave').show();
+
+            });
+        });
+
+        function adicionarContato() {
+
+            if ($.trim($('#txtNome').val()) == '') {
+                alert('Favor informar o nome!');
+                $('#txtNome').focus();
+                return false;
+            }
+            if ($.trim($('#txtIdade').val()) == '') {
+                alert('Favor informar a idade!');
+                $('#txtIdade').focus();
+                return false;
+            }
+            if ($.trim($('#txtTelefone').val()) == '') {
+                alert('Favor informar o telefone!');
+                $('#txtTelefone').focus();
+                return false;
+            }
+
+
+            var contatos = {
+                nome: $("#txtNome").val(),
+                idade: $("#txtIdade").val(),
+                telefone: $("#txtTelefone").val()
+            };
+
+            var contatosStorage = JSON.parse(localStorage.getItem("contatos"));
+
+            //console.log('Valores atuais no localstorage ' + JSON.stringify(contatosStorage));
+
+            if (contatosStorage == null) {
+                contatosStorage = [];
+                contatosStorage.push(contatos);
+            }
+            else {
+                if (posicaoParaRemover > -1) {
+
+                    contatosStorage[posicaoParaRemover] = {
+                        nome: $("#txtNome").val(),
+                        idade: $("#txtIdade").val(),
+                        telefone: $("#txtTelefone").val()
+                    };
+                }
+                else {
+                    contatosStorage.push(contatos);
+                }
+            }
+
+            //console.log('Com o objeto atual adicionado! ' + JSON.stringify(contatosStorage));
+            localStorage.setItem("contatos", JSON.stringify(contatosStorage))
+
+
+            $('#tblContatos tr:not(:first)').remove();
+
+            //contatosStorage = JSON.parse(localStorage.getItem("contatos"));
+
+            //console.log(contatosStorage[0]);
+
+            Listar();
+
+            posicaoParaRemover = -1;
+
+        }
+
+        function Listar() {
+
+            var contatosStorage = JSON.parse(localStorage.getItem("contatos"));
+
+            for (var posicao in contatosStorage) {
+
+                console.log(posicao);
+                var contato = contatosStorage[posicao];
+
+                $('#tblContatos tr:last').after('<tr><td>' + contato.nome + '</td><td>' +
+                    contato.idade + '</td><td>' + contato.telefone + '</td><td>' +
+                    '<button id="btnExcluir" alt="' + posicao +
+                    '" class="btn btn-danger btn-sm">Excluir</button>   <button id="btnEditar" alt="'
+                    + posicao + '" class="btn btn-info btn-sm">Editar</button>' +
+                    '</td></tr>');
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div class="panel panel-info">
+                <div class="panel-heading text-center">
+                    <h3><strong>Lista de contatos</strong></h3>
+                </div>
+                <div class="panel-body">
+                    <div class="col-xs-12 col-md-6 col-lg-3">
+                        <label for="txtNome">Nome</label>
+                        <input id="txtNome" type="text" class="form-control">
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-3">
+                        <label for="txtIdade">Idade</label>
+                        <input id="txtIdade" type="text" class="form-control">
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-3">
+                        <label for="txtTelefone">Telefone</label>
+                        <input id="txtTelefone" type="text" class="form-control">
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-3">
+                        <br>
+                        <button id="btnSalvar" type="button" class="btn btn-primary">Salvar</button>
+                    </div>
+                    <br>
+                    <br>
+                    <hr>
+                    <table id="tblContatos" class="table table-striped table-responsive table-hover">
+                        <tbody>
+                            <th>Nome</th>
+                            <th>Idade</th>
+                            <th>Telefone</th>
+                            <th>Ações</th>
+                            <th colspan="2" align="center">Ações</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-xs-5 col-md-6 col-lg-5 text-left">
+                            <label>Julho 2021</label>
+                        </div>
+                        <div class="col-xs-7 col-md-6 col-lg-7 text-right">
+                            <label>Crud (localStorage HTML5, jQuery, Bootstrap, JSON)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+</body>
+
+</html>
